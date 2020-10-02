@@ -9,7 +9,7 @@ public class Main {
         try {
             port(433);
 
-            secure("keystores/ecikeystore.p12", "prueba", null, null);
+            secure("keystores/ecikeystore.p12", "prueba", "keystores/myTrustStore", "prueba");
         } catch(Exception e){
             e.printStackTrace();
         }
