@@ -6,8 +6,13 @@ import static spark.Spark.*;
 
 public class Main {
     public static void main(String[] args) {
-        port(433);
-        secure("ecikeystore2.p12","prueba","myTrustStore","prueba");
+        try {
+            port(433);
+
+            secure("keystores/ecikeystore.p12", "prueba", null, null);
+        } catch(Exception e){
+            e.printStackTrace();
+        }
         post("/",(req,res)->{
             JSONObject jsonObject = new JSONObject(req.body());
             return Calculator.calculate(jsonObject.get("operation").toString(),Double.parseDouble(jsonObject.get("value").toString()));
